@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Counter from "./components/Counter";
 import { FormAddGift } from "./Gifts.type";
 
 interface AddGiftProps {
@@ -36,15 +37,13 @@ export default function AddGift({ onAddGift }: AddGiftProps) {
         />
       </div>
       <div className="col">
-        <input
-          className="form-add__input-quantity input-form"
-          placeholder="Cantidad"
-          type="number"
-          value={form.quantity}
-          onChange={(e) =>
-            setForm({ ...form, quantity: Number(e.currentTarget.value) })
+        <Counter
+          initialCount={form.quantity}
+          onChange={(newCount: number) =>
+            setForm({ ...form, quantity: newCount })
           }
         />
+
         <button className="btn btn--add" onClick={handleAddGift}>
           Agregar
         </button>
